@@ -42,7 +42,7 @@ void checkVariableEquality(const Polynomial* poly1, const Polynomial* poly2) {
                 continue;
             }
             if (var1 != var2 && (var1 != 0 && var2 != 0)) {
-                HANDLE_ERROR("Operations between polynomials with different coefficients are not supported, at line %ld", yylineno); 
+                HANDLE_ERROR("Operations between polynomials with different coefficients are not supported, at line %d", yylineno); 
             }
         }
     }
@@ -56,11 +56,12 @@ Polynomial* polyHandler(char variable, Polynomial* poly, int mode)
         return NULL;
     } else if (mode == 1) {
         if (poly_var_map[variable - 'A'] == NULL) {
-            HANDLE_ERROR("No polynomial assigned to variable '%c', at line %ld", variable, yylineno);  
+            HANDLE_ERROR("No polynomial assigned to variable '%c', at line %d", variable, yylineno);  
             return NULL;
         }
         return poly_var_map[variable - 'A'];
     }
+    return NULL;
 }
 
 void destroyPolynomial(Polynomial* poly) {
@@ -84,11 +85,11 @@ void printPolynomial(Polynomial *poly, int variable) {
     int firstTerm = 1;
     if (!poly->letter)
     {
-        printf("Line %ld result = ",yylineno );
+        printf("Line %d result = ",yylineno );
     }
     else
     {
-        printf("Line %ld variable '%c': ", yylineno, (char)poly->letter);
+        printf("Line %d variable '%c': ", yylineno, (char)poly->letter);
     }
     
     for (int i = 0; i < poly->num_terms; ++i) {
@@ -308,7 +309,7 @@ void simplifyPolynomial(Polynomial* poly) {
 }
 
 Polynomial* powerPolynomial(const Polynomial* poly, const int power) {
-    //printf("!\ndadda=%ld\n", yylineno);
+    //printf("!\ndadda=%d\n", yylineno);
     if (poly == NULL) {
         HANDLE_ERROR("Polynomial is NULL");
     }
@@ -341,7 +342,7 @@ int getFirstCoefficient(const Polynomial* poly) {
     if (poly->num_terms == 1 && poly->terms[0].exponent == 0 && poly->terms[0].coefficient >= 0) {
         return poly->terms[0].coefficient; 
     } else {
-        HANDLE_ERROR("The operation of exponentiating a polynomial is not supported, at line %ld", yylineno);
+        HANDLE_ERROR("The operation of exponentiating a polynomial is not supported, at line %d", yylineno);
         return 0;
     }
     return 0;

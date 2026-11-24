@@ -4,7 +4,7 @@
     #include "polycalc.h"
     void yyerror(char *msg) 
     {
-       HANDLE_ERROR("%s, at line %ld", msg, (long int)yylineno);
+       HANDLE_ERROR("%s, at line %d", msg, yylineno);
     }
     char current_variable; 
 

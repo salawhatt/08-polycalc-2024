@@ -12,7 +12,7 @@
 #include <locale.h>
 #include <limits.h>
 #include "error_constants.h"
-extern YYSTYPE yylineno;
+extern int yylineno;
 
 // Структура для представления одночлена
 typedef struct {

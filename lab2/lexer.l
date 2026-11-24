@@ -1,5 +1,6 @@
 %{
 #include <stdio.h>
+#include <errno.h>
 #include "parser.tab.h"
 #include "error_constants.h"
 int prev_val = 0;
