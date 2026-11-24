@@ -17,6 +17,11 @@
 %right OP_RPAREN
 
 
+%code requires {
+    #include <stdint.h>
+}
+%define api.value.type {int64_t}
+
 %token DIGIT VARIABLE EOC PRINT
 %token OP_ASSIGN POLY_VARIABLE
 %%

@@ -1,7 +1,7 @@
 #ifndef POLYNOM_H
 #define POLYNOM_H
 
-#define YYSTYPE int64_t
+
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
